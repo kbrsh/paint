@@ -1,0 +1,18 @@
+{
+  "name": "paint",
+  "version": "0.1.0",
+  "scripts": {
+    "dist": "coffee make dist"
+  },
+  "repository": "KingPixil/paint",
+  "license": {
+    "type": "MIT"
+  },
+  "devDependencies": {
+    "coffee-script": "1.5.x",
+    "express": "3.1.x",
+    "nob": "0.0.1",
+    "shelljs": "0.1.x",
+    "uglify-js": "2.4.x"
+  }
+}
