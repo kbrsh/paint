@@ -1,6 +1,6 @@
 {
-  "name": "paint",
-  "version": "0.1.1",
+  "name": "paintjs",
+  "version": "0.1.0",
   "scripts": {
     "dist": "coffee make dist"
   },
