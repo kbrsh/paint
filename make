@@ -39,7 +39,7 @@ target.dist = ->
 target.build = ->
   cd __dirname
   mkdir '-p', 'dist'
-  modules = (env['MODULES'] || 'paint').split(' ')
+  modules = (env['MODULES'] || 'paint event').split(' ')
   module_files = ( "src/#{module}.js" for module in modules )
   intro = "/* Paint v0.1.0 (c) MIT License Kabir Shah*/\n"
   dist = (intro + cat(module_files).replace(/^\/[\/*].*$/mg, '')).replace(/\n{3,}/g, "\n\n")
