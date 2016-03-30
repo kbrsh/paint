@@ -266,4 +266,4 @@
     return compatible(event)
   }
 
-})(Zepto)
+})(Paint)
