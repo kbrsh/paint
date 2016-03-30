@@ -1168,4 +1168,4 @@ window.$ === undefined && (window.$ = Paint)
     return compatible(event)
   }
 
-})(Zepto)
+})(Paint)
