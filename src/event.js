@@ -1,5 +1,5 @@
 ;(function($){
-  var _zid = 1, undefined,
+  var _pid = 1, undefined,
       slice = Array.prototype.slice,
       isFunction = $.isFunction,
       isString = function(obj){ return typeof obj == 'string' },
@@ -11,17 +11,17 @@
 
   specialEvents.click = specialEvents.mousedown = specialEvents.mouseup = specialEvents.mousemove = 'MouseEvents'
 
-  function zid(element) {
-    return element._zid || (element._zid = _zid++)
+  function pid(element) {
+    return element._pid || (element._pid = _pid++)
   }
   function findHandlers(element, event, fn, selector) {
     event = parse(event)
     if (event.ns) var matcher = matcherFor(event.ns)
-    return (handlers[zid(element)] || []).filter(function(handler) {
+    return (handlers[pid(element)] || []).filter(function(handler) {
       return handler
         && (!event.e  || handler.e == event.e)
         && (!event.ns || matcher.test(handler.ns))
-        && (!fn       || zid(handler.fn) === zid(fn))
+        && (!fn       || pid(handler.fn) === pid(fn))
         && (!selector || handler.sel == selector)
     })
   }
@@ -44,7 +44,7 @@
   }
 
   function add(element, events, fn, data, selector, delegator, capture){
-    var id = zid(element), set = (handlers[id] || (handlers[id] = []))
+    var id = pid(element), set = (handlers[id] || (handlers[id] = []))
     events.split(/\s/).forEach(function(event){
       if (event == 'ready') return $(document).ready(fn)
       var handler   = parse(event)
@@ -73,7 +73,7 @@
     })
   }
   function remove(element, events, fn, selector, capture){
-    var id = zid(element)
+    var id = pid(element)
     ;(events || '').split(/\s/).forEach(function(event){
       findHandlers(element, event, fn, selector).forEach(function(handler){
         delete handlers[id][handler.i]
@@ -89,7 +89,7 @@
     var args = (2 in arguments) && slice.call(arguments, 2)
     if (isFunction(fn)) {
       var proxyFn = function(){ return fn.apply(context, args ? args.concat(slice.call(arguments)) : arguments) }
-      proxyFn._zid = zid(fn)
+      proxyFn._pid = pid(fn)
       return proxyFn
     } else if (isString(context)) {
       if (args) {
