@@ -2,9 +2,12 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var banner = require('gulp-banner')
+var comment = '\/*\r\n* Paint V0.1.6 Alpha\r\n* Copyright 2016, Kabir Shah\r\n* http:\/\/github.com\/KingPixil\/paint\/\r\n* Free to use under the MIT license.\r\n* http:\/\/www.opensource.org\/licenses\/mit-license.php\r\n*\/\r\n'
 
 gulp.task('build', function () {
   return gulp.src('./src/_paint.js')
+    .pipe(banner(comment))
     .pipe($.preprocess())
     .pipe($.rename('paint.js'))
     .pipe($['6to5']())
