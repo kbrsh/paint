@@ -1,4 +1,4 @@
-var uid = cash.uid = '_cash'+Date.now();
+var uid = paint.uid = '_paint'+Date.now();
 
 function getDataCache(node) {
   return (node[uid] = node[uid] || {});
@@ -11,7 +11,7 @@ function setData(node, key, value) {
 function getData(node, key) {
   var c = getDataCache(node);
   if ( c[key] === undefined ) {
-    c[key] = node.dataset ? node.dataset[key] : cash(node).attr('data-'+key);
+    c[key] = node.dataset ? node.dataset[key] : paint(node).attr('data-'+key);
   }
   return c[key];
 }
@@ -20,7 +20,7 @@ function removeData(node, key) {
   var c = getDataCache(node);
   if ( c ) { delete c[key]; }
   else if ( node.dataset ) { delete node.dataset[key]; }
-  else { cash(node).removeAttr('data-' + name); }
+  else { paint(node).removeAttr('data-' + name); }
 }
 
 fn.extend({
