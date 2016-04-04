@@ -22,6 +22,7 @@
   // @include ./collection.js
   // @include ./css.js
   // @include ./events.js
+  // @include ./forms.js
   // @include ./manipulation.js
 
   return paint;

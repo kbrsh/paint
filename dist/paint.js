@@ -1,8 +1,8 @@
 "use strict";
 
 /*
-* Paint V0.1.6 Alpha
-* Copyright 2016, Kabir Shah
+* Paint v0.0.7 Alpha
+* Copyright (c) 2016, Kabir Shah
 * http://github.com/KingPixil/paint/
 * Free to use under the MIT license.
 * http://www.opensource.org/licenses/mit-license.php
@@ -518,6 +518,47 @@
 
   });
 
+  function encode(name, value) {
+    return "&" + encodeURIComponent(name) + "=" + encodeURIComponent(value).replace(/%20/g, "+");
+  }
+  function isCheckable(field) {
+    return field.type === "radio" || field.type === "checkbox";
+  }
+
+  var formExcludes = ["file", "reset", "submit", "button"];
+
+  fn.extend({
+    serialize: function () {
+      var formEl = this[0].elements, query = "";
+
+      each(formEl, function (field) {
+        if (field.name && formExcludes.indexOf(field.type) < 0) {
+          if (field.type === "select-multiple") {
+            each(field.options, function (o) {
+              if (o.selected) {
+                query += encode(field.name, o.value);
+              }
+            });
+          } else if (!isCheckable(field) || (isCheckable(field) && field.checked)) {
+            query += encode(field.name, field.value);
+          }
+        }
+      });
+
+      return query.substr(1);
+    },
+
+    val: function (value) {
+      if (value === undefined) {
+        return this[0].value;
+      } else {
+        return this.each(function (v) {
+          return v.value = value;
+        });
+      }
+    }
+
+  });
   function insertElement(el, child, prepend) {
     if (prepend) {
       var first = el.childNodes[0];
