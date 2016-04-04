@@ -2,10 +2,10 @@
 
 Minimal Library for JS
 
-# Credits
+# Usage
 
-This project is a fork of Zepto, as they say on their docs, to learn from it.
+Use it just like JQuery, as Paint is an extremely small, dead-simple version of it. For modern browsers.
 
-I will be adding new features to it and refine it, looking at how things work.
+## Find A Bug? Let Me Know
 
-Zepto is released under the MIT License, Credits go to Zepto for the base of this project
+Submit an issue
