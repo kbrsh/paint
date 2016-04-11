@@ -15,6 +15,10 @@ If you ever want a method that comes with JQuery, request it in the issues, I wi
 Submit an issue
 
 
+# Credits
+Paint is built on top of cash, but will continue to expand and hopefully taking all of JQuery's features.
+
+
 # License
 
 MIT License
