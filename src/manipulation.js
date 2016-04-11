@@ -94,6 +94,14 @@ fn.extend({
   text(content) {
     if (!content) { return this[0].textContent; }
     return this.each(v => v.textContent = content);
+  },
+  
+  hide() {
+    return this.each(function() {this.style.display = 'none'});
+  },
+  
+  show() {
+    return this.each(function() {this.style.display=''});
   }
 
 });
