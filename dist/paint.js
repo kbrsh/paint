@@ -675,6 +675,18 @@
       return this.each(function (v) {
         return v.textContent = content;
       });
+    },
+
+    hide: function () {
+      return this.each(function () {
+        this.style.display = "none";
+      });
+    },
+
+    show: function () {
+      return this.each(function () {
+        this.style.display = "";
+      });
     }
 
   });
