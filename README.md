@@ -16,7 +16,7 @@ Submit an issue
 
 
 # Credits
-Paint is built on top of [cash](https://github.com/kenwheeler/cash), but will continue to expand and hopefully taking all of JQuery's features.
+Paints' core fn compiler file is built on top of [cash](https://github.com/kenwheeler/cash), but the rest was recoded recently to support more browsers. (Full Recode, deleted all files, and started froms scratch)
 
 
 # License

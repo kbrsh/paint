@@ -7,23 +7,17 @@
     root.paint = root.$ = factory();
   }
 })(this, function() {
-
-  var doc        = document,
-      win        = window,
-      ArrayProto = Array.prototype,
-      slice      = ArrayProto.slice,
-      filter     = ArrayProto.filter,
-      push       = ArrayProto.push;
+  
+  var aP = Array.prototype,
+      slice = aP.slice
 
   // @include ./core.js
   // @include ./util.js
-  // @include ./data.js
-  // @include ./attributes.js
-  // @include ./collection.js
-  // @include ./css.js
+  // @include ./array.js
+  // @include ./class.js
   // @include ./events.js
-  // @include ./forms.js
-  // @include ./manipulation.js
+  // @include ./css.js
+  // @include ./misc.js
 
   return paint;
 });

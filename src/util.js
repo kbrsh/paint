@@ -20,6 +20,7 @@ paint.extend = fn.extend = function(target) {
   return target;
 };
 
+
 function each(collection, callback) {
   var l = collection.length,
       i = 0;
@@ -28,42 +29,3 @@ function each(collection, callback) {
     if ( callback.call(collection[i], collection[i], i, collection) === false ) { break; }
   }
 }
-
-function matches(el, selector) {
-  return (
-    el.matches ||
-    el.webkitMatchesSelector ||
-    el.mozMatchesSelector ||
-    el.msMatchesSelector ||
-    el.oMatchesSelector
-  ).call(el, selector);
-}
-
-function unique(collection) {
-  return paint(slice.call(collection).filter((item, index, self) => {
-    return self.indexOf(item) === index;
-  }));
-}
-
-paint.extend({
-
-  merge(first, second) {
-    var len = +second.length,
-        i = first.length,
-        j = 0;
-
-    for (; j < len; i++, j++) {
-      first[i] = second[j];
-    }
-
-    first.length = i;
-    return first;
-  },
-
-  each: each,
-  matches: matches,
-  unique: unique,
-  isArray: Array.isArray,
-  isNumeric(n) { return !isNaN(parseFloat(n)) && isFinite(n); }
-
-});
