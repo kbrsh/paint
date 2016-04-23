@@ -1,7 +1,7 @@
 "use strict";
 
 /*
-* Paint v0.0.8 Alpha
+* Paint v0.0.9 Alpha
 * Copyright (c) 2016, Kabir Shah
 * http://github.com/KingPixil/paint/
 * Free to use under the MIT license.
