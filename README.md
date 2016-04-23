@@ -16,7 +16,7 @@ Submit an issue
 
 
 # Credits
-Paint is built on top of [cash](https://github.com/kenwheeler/cash), but will continue to expand and hopefully taking all of JQuery's features.
+Paint is built on top of [psQuery](https://github.com/pseudosavant/psQuery), but will shrink down to save some bytes.
 
 
 # License
