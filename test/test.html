@@ -1,18 +1,23 @@
 <h1>Hello World</h1>
 <h1 id="hidden">Hello World</h1>
+<p id="p"></p>
+<input value="TEST"/>
 <style>
     .red {
         color:red;
     }
 </style>
 <script src="../dist/paint.min.js"></script>
+<script src="../empy.js"></script>
 <script>
 $(document).ready(function() {
-    $('h1').fadeIn();
     $('h1').addClass('red');
     $('h1').on("click", function() {
        $('h1').html("CLICKED"); 
     });
     $("#hidden").hide()
+    $('body').on("keyup", function() {
+         $('#p').html($('input').val());
+    });
 });
 </script>

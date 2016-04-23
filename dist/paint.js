@@ -51,40 +51,24 @@
   paint.fn = paint.prototype = {
     constructor: paint,
     init: function (selector) {
-      try {
-        if (!!selector.nodeType && (selector.nodeType === 1 || selector.nodeType === 9)) {
-          this.els = [selector];
-        } else if (typeMatch(selector, type_string)) {
-          this.els = document.querySelectorAll(selector);
-        }
-
-        this.length = this.els.length;
-
-        return this;
-      } catch (e) {
-        if (!debug) {
-          return undefined;
-        } else {
-          throw e;
-        }
+      if (!!selector.nodeType && (selector.nodeType === 1 || selector.nodeType === 9)) {
+        this.els = [selector];
+      } else if (typeMatch(selector, type_string)) {
+        this.els = document.querySelectorAll(selector);
       }
+
+      this.length = this.els.length;
+
+      return this;
     },
     ready: function (fn) {
-      if (document.readyState != "loading") {
-        fn();
-      } else {
-        document.addEventListener("DOMContentLoaded", fn);
-      }
+      document.readyState != "loading" ? fn() : document.addEventListener("DOMContentLoaded", fn);
     },
     each: function (fn) {
       var els = this.els, trueFalseCount = 0;
 
       for (var i = 0, l = els.length; i < l; i++) {
-        if (fn.call(els[i], i) === false) {
-          trueFalseCount--;
-        } else {
-          trueFalseCount++;
-        }
+        fn.call(els[i], i) === false ? trueFalseCount-- : trueFalseCount++;
       }
 
       return trueFalseCount;
@@ -99,15 +83,11 @@
       }
     },
     html: function (html) {
-      if (typeMatch(html, type_string)) {
-        this.each(function () {
-          this.innerHTML = html;
-        });
+      this.each(function () {
+        this.innerHTML = html;
+      });
 
-        return this;
-      } else {
-        return this.els[0].innerHTML;
-      }
+      return this;
     },
     hide: function () {
       this.each(function () {
