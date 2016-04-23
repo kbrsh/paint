@@ -1,6 +1,5 @@
 (function(global) {
   'use strict';
-  var type_string = 'string';
   var typeMatch = function(o, type) {
     return (typeof o === type);
   };
@@ -13,14 +12,10 @@
 
   paint.fn = paint.prototype = {
     constructor: paint,
-    init: function(selector) {
-        if (!!selector.nodeType && (selector.nodeType === 1 || selector.nodeType === 9)) {
-          this.els = [selector];
-        } else if (typeMatch(selector, type_string)) {
-          this.els = document.querySelectorAll(selector);
-        }
+    init: function(s) {
+          this.e = document.querySelectorAll(s);
 
-        this.length = this.els.length;
+        this.length = this.e.length;
 
         return this;
     },
@@ -28,14 +23,14 @@
       document.readyState != 'loading' ?  fn() : document.addEventListener('DOMContentLoaded', fn);
     },
     each: function(fn) {
-      var els = this.els,
-        trueFalseCount = 0;
+      var e = this.e,
+        count = 0;
 
-      for (var i = 0, l = els.length; i < l; i++) {
-        fn.call(els[i], i) === false ? trueFalseCount-- : trueFalseCount++;
+      for (var i = 0, l = e.length; i < l; i++) {
+        fn.call(e[i], i) === false ? count-- : count++;
       }
 
-      return trueFalseCount;
+      return count;
     },
     val: function(val) {
       if (val) {
@@ -43,19 +38,14 @@
           this.value = val;
         });
       } else {
-        return this.els[0].value;
+        return this.e[0].value;
       }
     },
     html: function(html) {
-      if (typeMatch(html, type_string)) {
-        this.each(function() {
-          this.innerHTML = html;
-        });
-
-        return this;
-      } else {
-        return this.els[0].innerHTML;
-      }
+      this.each(function() {
+        this.innerHTML = html;
+      });
+      return this;
     },
     hide: function() {
       this.each(function() {
@@ -72,65 +62,36 @@
       return this;
     },
     hasClass: function(className) {
-      className = className.trim();
-
-      var result = this.each(function() {
-        return (this.className.indexOf(className) > -1);
+      this.each(function() {
+        this.classList ? this.classList.contains(className) : new RegExp('(^| )' + className + '( |$)', 'gi').test(this.className);
       });
-
-      return ((result + this.length) > 0);
+      return this;
     },
     toggleClass: function(className) {
-      className = className.trim();
-
       this.each(function() {
-        var $this = $(this);
-        if ($this.hasClass(className)) {
-          $this.removeClass(className);
+        if (this.classList) {
+            this.classList.toggle(className);
         } else {
-          $this.addClass(className);
+          var classes = this.className.split(' ');
+          var existingIndex = classes.indexOf(className);
+          if (existingIndex >= 0)
+            classes.splice(existingIndex, 1);
+          else
+            classes.push(className);
+            this.className = classes.join(' ');
         }
       });
-
+    },
+    addClass: function(className) {
+      this.each(function() {
+        this.classList ? this.classList.add(className) : this.className += ' ' + className;
+      });
       return this;
     },
-    addClass: function(classes) {
-      var add = function() {
-        var merged = (this.className + ' ' + classes.trim()).split(' '),
-          uniques = {},
-          union = [];
-
-        for (var i = 0, l = merged.length; i < l; i++) {
-          uniques[merged[i]] = true;
-        }
-
-        for (var j in uniques) {
-          if (typeMatch(j, type_string)) {
-            union.push(j);
-          }
-        }
-
-        this.className = union.join(' ').trim();
-      };
-
-      if (typeMatch(classes, type_string)) {
-        this.each(add);
-      }
-      return this;
-    },
-    removeClass: function(classes) {
-      var remove = function() {
-        var existing = this.className + '';
-        var removing = classes.trim().split(' ');
-
-        for (var i = 0; i < removing.length; i++) {
-          existing = existing.replace(removing[i], '');
-        }
-
-        this.className = existing;
-      };
-
-      this.each(remove);
+    removeClass: function(c) {
+      this.each(function() {
+       this.classList ? this.classList.remove(c) : this.className = this.className.replace(new RegExp('(^|\\b)' + c.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+      });
       return this;
     },
     attr: function(attr, value) {
@@ -139,18 +100,11 @@
       });
       return this;
     },
-    css: function(css) {
-      var set = function() {
-        return undefined;
-      };
-
-      if (css) { // Set
-        this.each(set);
-      } else { // Get css for first element
-        return '';
-      }
-
-      return this;
+    css: function(css, prop) {
+        this.each(function() {
+          this.style[css] = prop;
+        });
+        return this;
     },
     click: function(callback) {
       this.on('click', callback);

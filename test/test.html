@@ -1,25 +1,34 @@
-<h1>Hello World</h1>
-<h1 id="hidden">Hello World</h1>
+<h1 class="blue">Hello World</h1>
+<h1 id="hidden" class="hide">Hello World</h1>
 <p id="p"></p>
 <input value="TEST"/>
 <style>
     .red {
         color:red;
     }
+    .blue {
+        color:blue;
+    }
 </style>
 <script src="../dist/paint.min.js"></script>
 <script src="../empy.js"></script>
 <script>
-$(document).ready(function() {
+$('body').empty();
     $('h1').addClass('red');
+    $('h1').removeClass('blue')
     $('h1').on("click", function() {
        $('h1').html("CLICKED"); 
+       $('h1').toggleClass("blue"); 
     });
-    $("#hidden").hide()
+    
+    if($('h1').hasClass("hide")) {
+         $("#hidden").hide()
+    }
     
     $("#p").css('color', 'blue')
+
     $('body').on("keyup", function() {
          $('#p').html($('input').val());
     });
-});
+
 </script>
