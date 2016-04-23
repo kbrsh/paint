@@ -71,23 +71,6 @@
 
       return this;
     },
-    fadeIn: function() {
-      this.style.opacity = 0;
-
-      var last = +new Date();
-      var tick = function() {
-        this.style.opacity = +this.style.opacity + (new Date() - last) / 400;
-        last = +new Date();
-
-        if (+this.style.opacity < 1) {
-          (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
-        }
-      };
-
-      tick();
-      
-      return this;
-    },
     hasClass: function(className) {
       className = className.trim();
 
