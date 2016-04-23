@@ -9,8 +9,6 @@
 */
 (function (global) {
   "use strict";
-
-  var debug = true;
   var type_string = "string";
   var typeMatch = function (o, type) {
     return (typeof o === type);
@@ -83,11 +81,15 @@
       }
     },
     html: function (html) {
-      this.each(function () {
-        this.innerHTML = html;
-      });
+      if (typeMatch(html, type_string)) {
+        this.each(function () {
+          this.innerHTML = html;
+        });
 
-      return this;
+        return this;
+      } else {
+        return this.els[0].innerHTML;
+      }
     },
     hide: function () {
       this.each(function () {
@@ -186,41 +188,23 @@
       });
       return this;
     },
-    css: function (css) {
-      var set = function () {
-        return undefined;
-      };
-
-      if (css) {
-        // Set
-        this.each(set);
-      } else {
-        // Get css for first element
-        return "";
-      }
+    css: function (a, prop) {
+      this.style.a = prop;
       return this;
     },
     click: function (callback) {
       this.on("click", callback);
     },
-    on: function (events) {
-      var callback = utils.lastArgumentCallback(arguments), ev = events.split(" ");
-
+    on: function (event, callback) {
       this.each(function () {
-        for (var i = 0; i < ev.length; i++) {
-          this.addEventListener(ev[i], callback, false);
-        }
+        this.addEventListener(event, callback, false);
       });
 
       return this;
     },
-    off: function (events) {
-      var callback = utils.lastArgumentCallback(arguments), ev = events.split(" ");
-
+    off: function (event, callback) {
       this.each(function () {
-        for (var i = 0; i < ev.length; i++) {
-          this.removeEventListener(ev[i], callback, false);
-        }
+        this.removeEventListener(event, callback, false);
       });
 
       return this;
@@ -232,9 +216,5 @@
   global.paint = paint;
   if (!global.$) {
     global.$ = paint;
-  }
-
-  if (debug) {
-    global.utils = utils;
   }
 })(this);
