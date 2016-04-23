@@ -1,7 +1,7 @@
 "use strict";
 
 /*
-* Paint v0.0.7 Alpha
+* Paint v0.0.8 Alpha
 * Copyright (c) 2016, Kabir Shah
 * http://github.com/KingPixil/paint/
 * Free to use under the MIT license.
@@ -44,7 +44,6 @@
     }
   };
 
-
   var paint = function (selector) {
     return new paint.fn.init(selector);
   };
@@ -68,6 +67,13 @@
         } else {
           throw e;
         }
+      }
+    },
+    ready: function (fn) {
+      if (document.readyState != "loading") {
+        fn();
+      } else {
+        document.addEventListener("DOMContentLoaded", fn);
       }
     },
     each: function (fn) {
@@ -114,6 +120,23 @@
       this.each(function () {
         this.style.display = "";
       });
+
+      return this;
+    },
+    fadeIn: function () {
+      this.style.opacity = 0;
+
+      var last = +new Date();
+      var tick = function () {
+        this.style.opacity = +this.style.opacity + (new Date() - last) / 400;
+        last = +new Date();
+
+        if (+this.style.opacity < 1) {
+          (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+        }
+      };
+
+      tick();
 
       return this;
     },
@@ -177,6 +200,12 @@
       this.each(remove);
       return this;
     },
+    attr: function (attr, value) {
+      this.each(function () {
+        this.setAttribute(attr, value);
+      });
+      return this;
+    },
     css: function (css) {
       var set = function () {
         return undefined;
@@ -218,7 +247,6 @@
     }
   };
 
-
   paint.fn.init.prototype = paint.fn;
 
   global.paint = paint;
@@ -229,5 +257,4 @@
   if (debug) {
     global.utils = utils;
   }
-
 })(this);

@@ -7,9 +7,12 @@
 </style>
 <script src="../dist/paint.min.js"></script>
 <script>
+$(document).ready(function() {
+    $('h1').fadeIn();
     $('h1').addClass('red');
     $('h1').on("click", function() {
-       $('h1').hide(); 
+       $('h1').html("CLICKED"); 
     });
     $("#hidden").hide()
+});
 </script>
