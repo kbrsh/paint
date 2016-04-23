@@ -188,8 +188,19 @@
       });
       return this;
     },
-    css: function (a, prop) {
-      this.style.a = prop;
+    css: function (css) {
+      var set = function () {
+        return undefined;
+      };
+
+      if (css) {
+        // Set
+        this.each(set);
+      } else {
+        // Get css for first element
+        return "";
+      }
+
       return this;
     },
     click: function (callback) {
