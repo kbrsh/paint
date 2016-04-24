@@ -2,9 +2,10 @@
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-var banner = require('gulp-banner')
-var PAINT_VERSION = "v0.0.9"
-var comment = '\/*\r\n* Paint ' + PAINT_VERSION + ' Alpha\r\n* Copyright (c) 2016, Kabir Shah\r\n* http:\/\/github.com\/KingPixil\/paint\/\r\n* Free to use under the MIT license.\r\n* http:\/\/www.opensource.org\/licenses\/mit-license.php\r\n*\/\r\n'
+var banner = require('gulp-banner');
+var pjson = require('./package.json');
+var PAINT_VERSION = pjson.version;
+var comment = '\/*\r\n* Paint ' + PAINT_VERSION + '\r\n* Copyright (c) 2016, Kabir Shah\r\n* http:\/\/github.com\/KingPixil\/paint\/\r\n* Free to use under the MIT license.\r\n* http:\/\/www.opensource.org\/licenses\/mit-license.php\r\n*\/\r\n'
 
 gulp.task('build', function () {
   return gulp.src('./src/_paint.js')
