@@ -1,4 +1,4 @@
 paint.fn.empty = function() {
-    this.innerHTML = '';
+    this.html('');
     return this;
 };
