@@ -57,6 +57,13 @@
 
       return this;
     },
+    toggle: function() {
+      this.each(function() {
+        this.style.display = '' ? this.style.display = 'none' : this.style.display = '';
+      });
+      
+      return this;
+    },
     hasClass: function(className) {
       this.each(function() {
         this.classList ? this.classList.contains(className) : new RegExp('(^| )' + className + '( |$)', 'gi').test(this.className);
