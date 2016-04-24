@@ -13,7 +13,7 @@
 <script src="../dist/paint.min.js"></script>
 <script src="../empy.js"></script>
 <script>
-$('body').empty();
+$(document).ready(function() {
     $('h1').addClass('red');
     $('h1').removeClass('blue')
     $('h1').on("click", function() {
@@ -30,5 +30,7 @@ $('body').empty();
     $('body').on("keyup", function() {
          $('#p').html($('input').val());
     });
+});
+    
 
 </script>
