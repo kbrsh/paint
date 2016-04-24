@@ -4,7 +4,6 @@
     return (typeof o === type);
   };
 
-  // @include ./util.js
 
   var paint = function(selector) {
     return new paint.fn.init(selector);
