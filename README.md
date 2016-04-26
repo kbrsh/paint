@@ -15,9 +15,11 @@ If you ever want a method that comes with JQuery, request it in the issues, I wi
 Submit an issue
 
 
-# Credits
-Paint is built on top of [psQuery](https://github.com/pseudosavant/psQuery), but will shrink down to save some bytes.
+# Special Thanks
 
+Without these projects, this one couldn't live:
+* youmightnotneedjquery.com
+* psQuery
 
 # License
 
