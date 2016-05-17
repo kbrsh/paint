@@ -24,7 +24,7 @@
       if (!!s.nodeType && (s.nodeType === 1 || s.nodeType === 9)) {
         this.e = [s];
       } else if (typeMatch(s, "string")) {
-        this.e = document.querySelectorAll(s);
+        this.e = document.querySelectorAll(s || '☺');
       }
 
       this.length = this.e.length;
