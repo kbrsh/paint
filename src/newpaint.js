@@ -41,6 +41,28 @@
       return this;
     },
     
+    hasClass: function(className) {
+      this.each(function() {
+        this.classList ? this.classList.contains(className) : new RegExp('(^| )' + className + '( |$)', 'gi').test(this.className);
+      });
+      return this;
+    },
+    toggleClass: function(className) {
+      this.each(function() {
+        if (this.classList) {
+            this.classList.toggle(className);
+        } else {
+          var classes = this.className.split(' ');
+          var existingIndex = classes.indexOf(className);
+          if (existingIndex >= 0)
+            classes.splice(existingIndex, 1);
+          else
+            classes.push(className);
+            this.className = classes.join(' ');
+        }
+      });
+    },
+    
     val: function(val) {
       if(val) {
         this.value = val;
@@ -61,6 +83,28 @@
       return this;
     },
     
+    hide: function() {
+      this.each(function() {
+        this.style.display = 'none';
+      });
+
+      return this;
+    },
+    show: function() {
+      this.each(function() {
+        this.style.display = '';
+      });
+
+      return this;
+    },
+    toggle: function() {
+      this.each(function() {
+        this.style.display = '' ? this.style.display = 'none' : this.style.display = '';
+      });
+      
+      return this;
+    },
+    
     css: function(rule, attr) {
       if(rule) {
         this.each(function() {
@@ -70,6 +114,10 @@
         return getComputedStyle(this)[rule];
       }
       return this;
+    },
+    
+    append: function(el) {
+      
     }
   };
 
