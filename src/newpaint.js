@@ -126,6 +126,7 @@
       this.each(function() {
           this.removeEventListener(event, cb);
       });
+      return this;
     },
     
     click: function(cb) {
