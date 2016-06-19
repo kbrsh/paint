@@ -120,6 +120,7 @@
       this.each(function() {
         this.addEventListener(event, cb);
       });
+      return this;
     },
     
     off: function(event, cb) {
