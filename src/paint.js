@@ -1,69 +1,46 @@
-(function(global) {
-  'use strict';
-  var typeMatch = function(o, type) {
-    return (typeof o === type);
+(function(window) {
+  var $ = function(selector) {
+    this.elements = ('' || document).querySelectorAll(selector);
+    this.length = this.elements.length;
+    return this;
   };
 
-
-  var paint = function(selector) {
-    return new paint.fn.init(selector);
-  };
-
-  paint.fn = paint.prototype = {
-    constructor: paint,
-    init: function(s) {
-        typeMatch(s, 'string') ? this.e = document.querySelectorAll(s) : this.e = [s];
-        return this.e;
+  $.fn = $.prototype = {
+    ready: function(callback) {
+      document.addEventListener("DOMContentLoaded", callback);
     },
-    ready: function(fn) {
-      document.readyState != 'loading' ?  fn() : document.addEventListener('DOMContentLoaded', fn);
-    },
-    each: function(fn) {
-      var e = this.e,
-        count = 0;
 
-      for (var i = 0, l = e.length; i < l; i++) {
-        fn.call(e[i], i) === false ? count-- : count++;
+    each: function(callback) {
+      for (var i = 0; i < this.length; i++) {
+        callback(this.elements[i], i, this.elements);
       }
-
-      return count;
+      return this;
     },
-    val: function(val) {
+
+    attr: function(name, val) {
       if (val) {
-        this.each(function() {
-          this.value = val;
-        });
-      } else {
-        return this.e[0].value;
+        this.setAttribute(name, val);
+      } else if (!val) {
+        return this.getAttribute(name);
       }
+      return this;
     },
-    html: function(html) {
-      this.each(function() {
-        this.innerHTML = html;
+
+    addClass: function(className) {
+      this.each(function(element) {
+        element.classList.add(className);
       });
       return this;
     },
-    hide: function() {
-      this.each(function() {
-        this.style.display = 'none';
+
+    removeClass: function(className) {
+      this.each(function(element) {
+        element.classList.remove(className);
       });
 
       return this;
     },
-    show: function() {
-      this.each(function() {
-        this.style.display = '';
-      });
-
-      return this;
-    },
-    toggle: function() {
-      this.each(function() {
-        this.style.display = '' ? this.style.display = 'none' : this.style.display = '';
-      });
-      
-      return this;
-    },
+    
     hasClass: function(className) {
       this.each(function() {
         this.classList ? this.classList.contains(className) : new RegExp('(^| )' + className + '( |$)', 'gi').test(this.className);
@@ -85,54 +62,81 @@
         }
       });
     },
-    addClass: function(className) {
-      this.each(function() {
-        this.classList ? this.classList.add(className) : this.className += ' ' + className;
-      });
+    
+    val: function(val) {
+      if(val) {
+        this.value = val;
+      } else if(!val) {
+        return this.elements[0].value;
+      }
       return this;
     },
-    removeClass: function(c) {
-      this.each(function() {
-       this.classList ? this.classList.remove(c) : this.className = this.className.replace(new RegExp('(^|\\b)' + c.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-      });
-      return this;
-    },
-    attr: function(attr, value) {
-      this.each(function() {
-        this.setAttribute(attr, value);
-      });
-      return this;
-    },
-    css: function(css, prop) {
+    
+    html: function(html) {
+      if(html) {
         this.each(function() {
-          this.style[css] = prop;
+          this.innerHTML = html;
         });
-        return this;
+      } else if(!html) {
+        return this.innerHTML;
+      }
+      return this;
     },
-    click: function(callback) {
-      this.on('click', callback);
-    },
-    on: function(event, callback) {
+    
+    hide: function() {
       this.each(function() {
-          this.addEventListener(event, callback, false);
+        this.style.display = 'none';
       });
 
       return this;
     },
-    off: function(event, callback) {
+    show: function() {
       this.each(function() {
-          this.removeEventListener(event, callback, false);
+        this.style.display = '';
       });
 
+      return this;
+    },
+    toggle: function() {
+      this.each(function() {
+        this.style.display = '' ? this.style.display = 'none' : this.style.display = '';
+      });
+      
+      return this;
+    },
+    
+    css: function(rule, attr) {
+      if(rule) {
+        this.each(function() {
+          this.style[rule] = attr;
+        });
+      } else if(!attr) {
+        return getComputedStyle(this)[rule];
+      }
+      return this;
+    },
+    
+    on: function(event, cb) {
+      this.each(function() {
+        this.addEventListener(event, cb);
+      });
+      return this;
+    },
+    
+    off: function(event, cb) {
+      this.each(function() {
+          this.removeEventListener(event, cb);
+      });
+      return this;
+    },
+    
+    click: function(cb) {
+      this.on('click', cb);
       return this;
     }
   };
 
-  paint.fn.init.prototype = paint.fn;
-
-  global.paint = paint;
-  if (!global.$) {
-    global.$ = paint;
-  }
-
-})(this);
+  window.$ = function(selector, context) {
+    return new $(selector, context);
+  };
+})(window);
