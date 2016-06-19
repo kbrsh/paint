@@ -7,9 +7,8 @@
 */
 (function(window) {
   var $ = function(selector, c) {
-    this.elements = (c || document).querySelectorAll(selector);
+    this.elements = (document.querySelectorAll(selector) || c);
     this.length = this.elements.length;
-    return this;
   };
 
   $.fn = $.prototype = {
