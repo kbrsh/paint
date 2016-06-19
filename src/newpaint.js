@@ -116,9 +116,19 @@
       return this;
     },
     
-    append: function(el) {
-      
-    }
+    on: function(event, cb) {
+      this.each(function() {
+        this.addEventListener(event, cb);
+      });
+    },
+    
+    off: function(event, cb) {
+      this.each(function() {
+          this.removeEventListener(event, cb);
+      });
+    },
+    
+    
   };
 
   window.$ = function(selector, context) {
