@@ -59,6 +59,17 @@
         return this.innerHTML;
       }
       return this;
+    },
+    
+    css: function(rule, attr) {
+      if(rule) {
+        this.each(function() {
+          this.style[rule] = attr;
+        });
+      } else if(!attr) {
+        return getComputedStyle(this)[rule];
+      }
+      return this;
     }
   };
 
