@@ -1,6 +1,6 @@
 (function(window) {
-  var $ = function(selector, context) {
-    this.elements = (context || document).querySelectorAll(selector);
+  var $ = function(selector) {
+    this.elements = ('' || document).querySelectorAll(selector);
     this.length = this.elements.length;
     return this;
   };
@@ -128,7 +128,10 @@
       });
     },
     
-    
+    click: function(cb) {
+      this.on('click', cb);
+      return this;
+    }
   };
 
   window.$ = function(selector, context) {
