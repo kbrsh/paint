@@ -1,142 +1,149 @@
-"use strict";
-
 /*
-* Paint v0.0.9 Alpha
+* Paint 0.1.9
 * Copyright (c) 2016, Kabir Shah
 * http://github.com/KingPixil/paint/
 * Free to use under the MIT license.
-* http://www.opensource.org/licenses/mit-license.php
+* http://kingpixil.github.io/license
 */
-(function (global) {
-  "use strict";
-  var typeMatch = function (o, type) {
-    return (typeof o === type);
+(function(window) {
+  var $ = function(selector) {
+    this.elements = ('' || document).querySelectorAll(selector);
+    this.length = this.elements.length;
+    return this;
   };
 
+  $.fn = $.prototype = {
+    ready: function(callback) {
+      document.addEventListener("DOMContentLoaded", callback);
+    },
 
-  var paint = function (selector) {
-    return new paint.fn.init(selector);
-  };
-
-  paint.fn = paint.prototype = {
-    constructor: paint,
-    init: function (s) {
-      if (!!s.nodeType && (s.nodeType === 1 || s.nodeType === 9)) {
-        this.e = [s];
-      } else if (typeMatch(s, "string")) {
-        this.e = document.querySelectorAll(s || '☺');
+    each: function(callback) {
+      for (var i = 0; i < this.length; i++) {
+        callback(this.elements[i], i, this.elements);
       }
-
-      this.length = this.e.length;
-
       return this;
     },
-    ready: function (fn) {
-      document.readyState != "loading" ? fn() : document.addEventListener("DOMContentLoaded", fn);
-    },
-    each: function (fn) {
-      var e = this.e, count = 0;
 
-      for (var i = 0, l = e.length; i < l; i++) {
-        fn.call(e[i], i) === false ? count-- : count++;
-      }
-
-      return count;
-    },
-    val: function (val) {
+    attr: function(name, val) {
       if (val) {
-        this.each(function () {
-          this.value = val;
-        });
-      } else {
-        return this.e[0].value;
+        this.setAttribute(name, val);
+      } else if (!val) {
+        return this.getAttribute(name);
       }
+      return this;
     },
-    html: function (html) {
-      this.each(function () {
-        this.innerHTML = html;
+
+    addClass: function(className) {
+      this.each(function(element) {
+        element.classList.add(className);
       });
       return this;
     },
-    hide: function () {
-      this.each(function () {
-        this.style.display = "none";
+
+    removeClass: function(className) {
+      this.each(function(element) {
+        element.classList.remove(className);
       });
 
       return this;
     },
-    show: function () {
-      this.each(function () {
-        this.style.display = "";
-      });
-
-      return this;
-    },
-    hasClass: function (className) {
-      this.each(function () {
-        this.classList ? this.classList.contains(className) : new RegExp("(^| )" + className + "( |$)", "gi").test(this.className);
+    
+    hasClass: function(className) {
+      this.each(function() {
+        this.classList ? this.classList.contains(className) : new RegExp('(^| )' + className + '( |$)', 'gi').test(this.className);
       });
       return this;
     },
-    toggleClass: function (className) {
-      this.each(function () {
+    toggleClass: function(className) {
+      this.each(function() {
         if (this.classList) {
-          this.classList.toggle(className);
+            this.classList.toggle(className);
         } else {
-          var classes = this.className.split(" ");
+          var classes = this.className.split(' ');
           var existingIndex = classes.indexOf(className);
-          if (existingIndex >= 0) classes.splice(existingIndex, 1);else classes.push(className);
-          this.className = classes.join(" ");
+          if (existingIndex >= 0)
+            classes.splice(existingIndex, 1);
+          else
+            classes.push(className);
+            this.className = classes.join(' ');
         }
       });
     },
-    addClass: function (className) {
-      this.each(function () {
-        this.classList ? this.classList.add(className) : this.className += " " + className;
-      });
+    
+    val: function(val) {
+      if(val) {
+        this.value = val;
+      } else if(!val) {
+        return this.elements[0].value;
+      }
       return this;
     },
-    removeClass: function (c) {
-      this.each(function () {
-        this.classList ? this.classList.remove(c) : this.className = this.className.replace(new RegExp("(^|\\b)" + c.split(" ").join("|") + "(\\b|$)", "gi"), " ");
-      });
+    
+    html: function(html) {
+      if(html) {
+        this.each(function() {
+          this.innerHTML = html;
+        });
+      } else if(!html) {
+        return this.innerHTML;
+      }
       return this;
     },
-    attr: function (attr, value) {
-      this.each(function () {
-        this.setAttribute(attr, value);
-      });
-      return this;
-    },
-    css: function (css, prop) {
-      this.each(function () {
-        this.style[css] = prop;
-      });
-      return this;
-    },
-    click: function (callback) {
-      this.on("click", callback);
-    },
-    on: function (event, callback) {
-      this.each(function () {
-        this.addEventListener(event, callback, false);
+    
+    hide: function() {
+      this.each(function() {
+        this.style.display = 'none';
       });
 
       return this;
     },
-    off: function (event, callback) {
-      this.each(function () {
-        this.removeEventListener(event, callback, false);
+    show: function() {
+      this.each(function() {
+        this.style.display = '';
       });
 
+      return this;
+    },
+    toggle: function() {
+      this.each(function() {
+        this.style.display = '' ? this.style.display = 'none' : this.style.display = '';
+      });
+      
+      return this;
+    },
+    
+    css: function(rule, attr) {
+      if(rule) {
+        this.each(function() {
+          this.style[rule] = attr;
+        });
+      } else if(!attr) {
+        return getComputedStyle(this)[rule];
+      }
+      return this;
+    },
+    
+    on: function(event, cb) {
+      this.each(function() {
+        this.addEventListener(event, cb);
+      });
+      return this;
+    },
+    
+    off: function(event, cb) {
+      this.each(function() {
+          this.removeEventListener(event, cb);
+      });
+      return this;
+    },
+    
+    click: function(cb) {
+      this.on('click', cb);
       return this;
     }
   };
 
-  paint.fn.init.prototype = paint.fn;
-
-  global.paint = paint;
-  if (!global.$) {
-    global.$ = paint;
-  }
-})(this);
+  window.$ = function(selector, context) {
+    return new $(selector, context);
+  };
+})(window);

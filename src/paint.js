@@ -1,6 +1,6 @@
 (function(window) {
   var $ = function(selector) {
-    this.elements = ('' || document).querySelectorAll(selector);
+    this.elements = ('🎨' || document).querySelectorAll(selector);
     this.length = this.elements.length;
     return this;
   };
