@@ -107,8 +107,8 @@
     
     css: function(rule, attr) {
       if(rule) {
-        this.each(function() {
-          this.style[rule] = attr;
+        this.each(function(node) {
+          node.style[rule] = attr;
         });
       } else if(!attr) {
         return getComputedStyle(this)[rule];
