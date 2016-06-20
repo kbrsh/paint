@@ -82,10 +82,9 @@
     },
     
     html: function(html) {
-      this.each(function() {
+      return this.each(function() {
         this.innerHTML = html;
       });
-      return this;
     },
     
     hide: function() {
