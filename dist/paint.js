@@ -94,22 +94,22 @@
     },
     
     hide: function() {
-      this.each(function() {
-        this.style.display = 'none';
+      this.each(function(node) {
+        node.style.display = 'none';
       });
 
       return this;
     },
     show: function() {
-      this.each(function() {
-        this.style.display = '';
+      this.each(function(node) {
+        node.style.display = '';
       });
 
       return this;
     },
     toggle: function() {
-      this.each(function() {
-        this.style.display = '' ? this.style.display = 'none' : this.style.display = '';
+      this.each(function(node) {
+        node.style.display = '' ? this.style.display = 'none' : this.style.display = '';
       });
       
       return this;
