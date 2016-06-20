@@ -74,13 +74,9 @@
     },
     
     html: function(html) {
-      if(html) {
         this.each(function() {
           this.innerHTML = html;
         });
-      } else if(!html) {
-        return this.innerHTML;
-      }
       return this;
     },
     
