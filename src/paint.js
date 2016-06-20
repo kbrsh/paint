@@ -76,8 +76,8 @@
     
     html: function(html) {
       if(html) {
-        this.each(function() {
-          this.innerHTML = html;
+        this.each(function(node) {
+          node.innerHTML = html;
         });
       } else {
         return this.elements[0].innerHTML || '';
