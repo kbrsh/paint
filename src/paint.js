@@ -74,9 +74,9 @@
     },
     
     html: function(html) {
-        this.each(function() {
-          this.innerHTML = html;
-        });
+      this.each(function() {
+        this.innerHTML = html;
+      });
       return this;
     },
     
