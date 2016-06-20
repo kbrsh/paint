@@ -64,13 +64,14 @@
       });
     },
     
-    val: function(val) {
-      if(val) {
-        this.value = val;
-      } else if(!val) {
-        return this.value;
+    val: function (val) {
+      if (val) {
+        this.each(function () {
+          this.value = val;
+        });
+      } else {
+        return this.elements[0].value;
       }
-      return this;
     },
     
     html: function(html) {
