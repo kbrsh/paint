@@ -68,7 +68,7 @@
       if(val) {
         this.value = val;
       } else if(!val) {
-        return this.elements[0].value;
+        return this.value;
       }
       return this;
     },
