@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 
@@ -10,7 +9,7 @@
   <meta name="author" content="Kabir Shah">
 
   <title>Paint</title>
-  
+
   <!-- Link to CSS -->
   <link rel="stylesheet" type="text/css" href="./css/lib/wing.min.css" />
   <link rel="stylesheet" type="text/css" href="./css/styles.css" />
@@ -19,144 +18,147 @@
 </head>
 
 <body>
-<div class="button_container">
-  <span class="top bar"></span>
-  <span class="middle bar"></span>
-  <span class="bottom bar"></span>
-</div>
-
-<div class="overlay">
-  <div class="nav">
-    <ul>
-      <li><a href="#hero" data-speed="1000" class="menuLink scroll">Home</a></li>
-      <li><a href="#about" data-speed="1000" class="menuLink scroll">About</a></li>
-      <li><a href="#docs" data-speed="1000" class="menuLink scroll">Docs</a></li>
-      <li><a href="#examples" data-speed="1000" class="menuLink scroll">Examples</a></li>
-    </ul>
+  <div class="button_container">
+    <span class="top bar"></span>
+    <span class="middle bar"></span>
+    <span class="bottom bar"></span>
   </div>
-</div>
 
-      <section id="hero" class="text-center">
-          <div class="center">
-              <h1 id="paintHead">Paint</h1>
-              <p>Lightweight JS Library for DOM Manipulation/Events.</p>
-              <p><em>v1.0.1</em></p>
-              <!--<code>npm install wingcss</code>-->
-              <br/>
-              <a href="#about" class="scroll" data-scroll="1000"><button class="btn btn-outline">check it out</button></a>
-          </div>
-      </section>
-      <section id="about" class="text-center">
-          <div class="container">
-                <h5>What is Paint?</h5>
-                <p>Let's face it, you don't need 100s of KB's of Javascript just to manipulate the DOM and see when a user does something. Paint aims to fix that for you. It comes with all of JQuery's core features that you need, and uses optimized code to make it blazing fast. If you've ever used JQuery, than learning how to use Paint will be no problem, it has a JQuery-like API, which is easy to understand. If not, then check out the docs below.</p>
-                <br/>
-                <p>If you love Wing, then tweet it, star it, or fork it, it really helps &#9825;</p>
-                <br/>
-                <div class="text-center">
-                <a href="https://twitter.com/share" class="twitter-share-button" data-via="SimpleCoolDude1">Tweet</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                <iframe src="https://ghbtns.com/github-btn.html?user=KingPixil&repo=paint&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
-                <iframe src="https://ghbtns.com/github-btn.html?user=KingPixil&repo=paint&type=fork&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <h5>Open Source</h5>
-                        <p>Paint is 100% open source, so you can learn from it, and see what happens under the hood. Check it out on <a href="https://github.com/KingPixil/paint" class="gitLink">Github</a>. Make sure to star it! Paint is also released under the <a href="http://kingpixil.github.io/license/" target="_blank">MIT License</a>, allowing you to use it in a variety of projects.</p>
-                    </div>
-                    <div class="col-4">
-                        <h5>Lightweight</h5>
-                        <p>Paint is only <strong>~1kb</strong> minified. Making it super fast to load and use. You don't need to compile any files, nothing complex. All you do is link to it and you are done. Because of Paint's lightweight file size, it will load much faster than &lt;place-framework-here&gt;</p>
-                    </div>
-                    <div class="col-4">
-                        <h5>Browser Support</h5>
-                        <p>Paint supports a variety of browsers, including</p>
-                        <ul>
-                            <li>Chrome</li>
-                            <li>IE 10+</li>
-                            <li>Firefox</li>
-                            <li>Opera</li>
-                            <li>Safari</li>
-                            <li>Edge</li>
-                        </ul>
-                    </div>
-                </div>
-          </div>
-      </section>
-      <section id="docs">
-          <div class="container">
-              <h2 class="text-center">Documentation</h2>
-              <p class="text-center">How you use Wing.</p>
-              <div class="docSection">
-                <h5>Get Started</h5>
-                Run <code>npm install paintjs</code>, and link to <code>./node_modules/paintjs/dist/paint.min.js</code>
-                <br/>
-                Also, you can just add this to your <code>&lt;head&gt;</code>: <code>&lt;link rel="stylesheet" href="http://usepaint.ml/dist/paint.min.js"/&gt;</code>
-              </div>
+  <div class="overlay">
+    <div class="nav">
+      <ul>
+        <li><a href="#hero" data-speed="1000" class="menuLink scroll">Home</a></li>
+        <li><a href="#about" data-speed="1000" class="menuLink scroll">About</a></li>
+        <li><a href="#docs" data-speed="1000" class="menuLink scroll">Docs</a></li>
+        <li><a href="#examples" data-speed="1000" class="menuLink scroll">Examples</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="hero" class="text-center">
+    <div class="center">
+      <h1 id="paintHead">Paint</h1>
+      <p>Lightweight JS Library for DOM Manipulation/Events.</p>
+      <p><em>v1.0.1</em></p>
+      <!--<code>npm install wingcss</code>-->
+      <br/>
+      <a href="#about" class="scroll" data-scroll="1000"><button class="btn btn-outline">check it out</button></a>
+    </div>
+  </section>
+  <section id="about" class="text-center">
+    <div class="container">
+      <h5>What is Paint?</h5>
+      <p>Let's face it, you don't need 100s of KB's of Javascript just to manipulate the DOM and see when a user does something. Paint aims to fix that for you. It comes with all of JQuery's core features that you need, and uses optimized code to make it
+        blazing fast. If you've ever used JQuery, than learning how to use Paint will be no problem, it has a JQuery-like API, which is easy to understand. If not, then check out the docs below.</p>
+      <br/>
+      <p>If you love Wing, then tweet it, star it, or fork it, it really helps &#9825;</p>
+      <br/>
+      <div class="text-center">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="SimpleCoolDude1">Tweet</a>
+        <script>
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+        </script>
+        <iframe src="https://ghbtns.com/github-btn.html?user=KingPixil&repo=paint&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
+        <iframe src="https://ghbtns.com/github-btn.html?user=KingPixil&repo=paint&type=fork&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <h5>Open Source</h5>
+          <p>Paint is 100% open source, so you can learn from it, and see what happens under the hood. Check it out on <a href="https://github.com/KingPixil/paint" class="gitLink">Github</a>. Make sure to star it! Paint is also released under the <a href="http://kingpixil.github.io/license/"
+              target="_blank">MIT License</a>, allowing you to use it in a variety of projects.</p>
+        </div>
+        <div class="col-4">
+          <h5>Lightweight</h5>
+          <p>Paint is only <strong>~1kb</strong> minified. Making it super fast to load and use. You don't need to compile any files, nothing complex. All you do is link to it and you are done. Because of Paint's lightweight file size, it will load much
+            faster than &lt;place-framework-here&gt;</p>
+        </div>
+        <div class="col-4">
+          <h5>Browser Support</h5>
+          <p>Paint supports a variety of browsers, including</p>
+          <ul>
+            <li>Chrome</li>
+            <li>IE 10+</li>
+            <li>Firefox</li>
+            <li>Opera</li>
+            <li>Safari</li>
+            <li>Edge</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="docs">
+    <div class="container">
+      <h2 class="text-center">Documentation</h2>
+      <p class="text-center">How you use Wing.</p>
+      <div class="docSection">
+        <h5>Get Started</h5> Run <code>npm install paintjs</code>, and link to <code>./node_modules/paintjs/dist/paint.min.js</code>
+        <br/> Also, you can just add this to your <code>&lt;head&gt;</code>: <code>&lt;link rel="stylesheet" href="http://usepaint.ml/dist/paint.min.js"/&gt;</code>
+      </div>
 
 
-              <div class="docSection">
-                  <h5>DOM Selection</h5>
-                  <p>Paint comes with simple DOM selection like JQuery out of the box. This means that you don't ever have to write those long statements just for getting access to a node, instead you can focus on the important stuff.</p>
-                  <p>To use it, you can simply call the <code>$</code> function with a cs selector inside declaring what element you want to manipulate.</p>
-                  <pre>
-                      <code>
+      <div class="docSection">
+        <h5>DOM Selection</h5>
+        <p>Paint comes with simple DOM selection like JQuery out of the box. This means that you don't ever have to write those long statements just for getting access to a node, instead you can focus on the important stuff.</p>
+        <p>To use it, you can simply call the <code>$</code> function with a cs selector inside declaring what element you want to manipulate.</p>
+        <pre>
+          <code>
 $("#someID");
 $("p");
 $(".someClass")
 $(".someClass p #idInPInClass");
-                      </code>
-                  </pre>
-              </div>
-              
-              <div class="docSection">
-                <h5>Ready</h5>
-                <p>Paint comes with a simple function that easily lets you know when the <strong>DOM is ready</strong>.</p>
-                <div class="row">
-                  <div class="col-6">
-                    <p>
-                      You simply call the <code>.ready()</code> function. This will attach an event to the document and will execute the callback function code when the DOM is ready. This prevents you from manipulating things in the HTML that haven't loaded yet.
-                    </p>
-                  </div>
-                  <div class="col-6">
-                    <pre>
-                      <code>
+          </code>
+        </pre>
+      </div>
+
+      <div class="docSection">
+        <h5>Ready</h5>
+        <p>Paint comes with a simple function that easily lets you know when the <strong>DOM is ready</strong>.</p>
+        <div class="row">
+          <div class="col-6">
+            <p>
+              You simply call the <code>.ready()</code> function. This will attach an event to the document and will execute the callback function code when the DOM is ready. This prevents you from manipulating things in the HTML that haven't loaded yet.
+            </p>
+          </div>
+          <div class="col-6">
+            <pre>
+              <code>
 $().ready(function() {
   // Your code here
 });
-                      </code>
-                    </pre>
-                 </div>
-                </div>
-              </div>
+              </code>
+            </pre>
           </div>
-        </section>
-
-      <section id="examples">
-          <div class="container">
-              <h5 class="text-center">Examples</h5>
-              <p>Here are examples of real people using Paint. Have you used Paint in any of your projects? If so, then comment your link <a href="https://github.com/KingPixil/wing/issues/1">here</a>.</p>
-              <br/>
-              <ul>
-                  <li><a href="http://usewing.ml/" target="_blank">Wing</a> - A minimal CSS Framework.</li>
-              </ul>
-          </div>
-      </section>
-      <section id="thanks">
-          <div class="container">
-              <div class="text-center">
-                  <h5>Thanks For Visiting</h5>
-                  <p>We hope that you liked Paint.</p>
-              </div>
-          </div>
-      </section>
-      <div id="social">
-          <iframe src="https://ghbtns.com/github-btn.html?user=KingPixil&repo=paint&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
-          <iframe src="https://ghbtns.com/github-btn.html?user=KingPixil&repo=paint&type=fork&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
+        </div>
       </div>
-      <footer id="footer">
-        Made with <span id="heart">&#9825;</span> By <a id="linkP" class="underline white" href="http://kabir.ml" target="_blank">Kabir</a>
-      </footer>
+    </div>
+  </section>
+
+  <section id="examples">
+    <div class="container">
+      <h5 class="text-center">Examples</h5>
+      <p>Here are examples of real people using Paint. Have you used Paint in any of your projects? If so, then comment your link <a href="https://github.com/KingPixil/wing/issues/1">here</a>.</p>
+      <br/>
+      <ul>
+        <li><a href="http://usewing.ml/" target="_blank">Wing</a> - A minimal CSS Framework.</li>
+      </ul>
+    </div>
+  </section>
+  <section id="thanks">
+    <div class="container">
+      <div class="text-center">
+        <h5>Thanks For Visiting</h5>
+        <p>We hope that you liked Paint.</p>
+      </div>
+    </div>
+  </section>
+  <div id="social">
+    <iframe src="https://ghbtns.com/github-btn.html?user=KingPixil&repo=paint&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
+    <iframe src="https://ghbtns.com/github-btn.html?user=KingPixil&repo=paint&type=fork&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
+  </div>
+  <footer id="footer">
+    Made with <span id="heart">&#9825;</span> By <a id="linkP" class="underline white" href="http://kabir.ml" target="_blank">Kabir</a>
+  </footer>
   <script src="./dist/paint.min.js"></script>
   <script src="./js/scripts.js"></script>
 </body>
