@@ -1,5 +1,5 @@
 /*
-* Paint 0.1.9
+* Paint 1.0.0
 * Copyright (c) 2016, Kabir Shah
 * http://github.com/KingPixil/paint/
 * Free to use under the MIT license.
