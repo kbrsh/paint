@@ -82,9 +82,14 @@
     },
     
     html: function(html) {
-      this.each(function() {
-        this.innerHTML = html;
-      });
+      if(html) {
+        this.each(function() {
+          this.innerHTML = html;
+        });
+      } else {
+        return this.elements[0].innerHTML || '';
+      }
+      
       return this;
     },
     
