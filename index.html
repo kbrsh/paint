@@ -159,11 +159,17 @@ $("h1").each(function(node) {
         <div class="row">
           <div class="col-6">
             <p><strong>Description</strong> - These functions will let you manipulate class(es), by adding, removing, toggle, or seeing if an element has a class.</p>
+            <p><strong>Methods</strong> - <code>.addClass()</code> adds a class, <code>.removeClass()</code> removes a class, <code>.toggleClass()</code> will toggle a class, and <code>.hasClass()</code> checks if an element contains a class.</p>
             <p><strong>Parameters</strong> - ClassName</p>
-            <p><strong>Returns</strong> - <code>$</code>, you can chain more Paint methods.</p>
+            <p><strong>Returns</strong> - <code>$</code>, you can chain more Paint methods. Except <code>.hasClass()</code>, which returns true/false.</p>
           </div>
           <div class="col-6">
-            
+            <pre>
+              <code>
+$("p").addClass("blue"); // adds the class "blue" to every "p" element
+$("p").removeClass("
+              </code>
+            </pre>
           </div>
         </div>
       </div>
