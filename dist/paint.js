@@ -71,13 +71,14 @@
       });
     },
     
-    val: function(val) {
-      if(val) {
-        this.value = val;
-      } else if(!val) {
+    val: function (val) {
+      if (val) {
+        this.each(function () {
+          this.value = val;
+        });
+      } else {
         return this.elements[0].value;
       }
-      return this;
     },
     
     html: function(html) {
@@ -135,7 +136,7 @@
     },
     
     click: function(cb) {
-      this.addEventListener('click', cb);
+      this.on('click', cb);
       return this;
     }
   };
