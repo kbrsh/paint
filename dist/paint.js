@@ -81,13 +81,9 @@
     },
     
     html: function(html) {
-      if(html) {
-        this.each(function() {
-          this.innerHTML = html;
-        });
-      } else if(!html) {
-        return this.innerHTML;
-      }
+      this.each(function() {
+        this.innerHTML = html;
+      });
       return this;
     },
     
@@ -139,7 +135,7 @@
     },
     
     click: function(cb) {
-      this.on('click', cb);
+      this.addEventListener('click', cb);
       return this;
     }
   };
