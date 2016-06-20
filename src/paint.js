@@ -92,7 +92,7 @@
     },
     toggle: function() {
       this.each(function(node) {
-        node.style.display = '' ? this.style.display = 'none' : this.style.display = '';
+        node.style.display = '' ? node.style.display = 'none' : node.style.display = '';
       });
       
       return this;
