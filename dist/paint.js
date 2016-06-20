@@ -73,8 +73,8 @@
     
     val: function (val) {
       if (val) {
-        this.each(function () {
-          this.value = val;
+        this.each(function (node) {
+          node.value = val;
         });
       } else {
         return this.elements[0].value;
