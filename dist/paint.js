@@ -23,16 +23,16 @@
       return this;
     },
 
-    // attr: function(name, val) {
-    //   if (val) {
-    //     this.each(function() {
-    //       this.setAttribute(name, val);
-    //     });
-    //   } else if (!val) {
-    //     return this.getAttribute(name);
-    //   }
-    //   return this;
-    // },
+    attr: function(name, val) {
+      if (val) {
+        this.each(function(node) {
+          node.setAttribute(name, val);
+        });
+      } else if (!val) {
+        return this.elements[0].getAttribute(name);
+      }
+      return this;
+    },
 
     addClass: function(className) {
       this.each(function(element) {
