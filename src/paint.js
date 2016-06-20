@@ -75,9 +75,10 @@
     },
     
     html: function(html) {
-      return this.each(function() {
+      this.each(function() {
         this.innerHTML = html;
       });
+      return this;
     },
     
     hide: function() {
