@@ -132,7 +132,7 @@
     },
     
     click: function(cb) {
-      this.on('click', cb);
+      this.addEventListener('click', cb);
       return this;
     }
   };
