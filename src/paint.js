@@ -129,7 +129,7 @@
     },
     
     click: function(cb) {
-      this.addEventListener('click', cb);
+      this.on('click', cb);
       return this;
     }
   };
