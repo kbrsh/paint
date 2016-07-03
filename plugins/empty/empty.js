@@ -1,4 +1,4 @@
-paint.fn.empty = function() {
+$.fn.empty = function() {
     this.html('');
     return this;
 };
