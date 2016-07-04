@@ -10,7 +10,7 @@ This is the code for the documentation.
 - [x] .each();
 - [x] classes
 - [x] .val();
-- [ ] .html();
+- [x] .html();
 - [ ] .attr();
 - [ ] .css();
 - [ ] .hide()/.show()/.toggle();
