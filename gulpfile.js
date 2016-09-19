@@ -31,9 +31,8 @@ gulp.task('lint', function() {
     .pipe($.jshint.reporter('default'));
 });
 
-
-gulp.task('default', ['build', 'minify', 'lint']);
-
 gulp.task('watch', function() {
   gulp.watch(['src/*.js'], ['default']);
 });
+
+gulp.task('default', ['build', 'minify', 'lint']);
